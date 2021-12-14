@@ -971,7 +971,7 @@ GameObject:
   - component: {fileID: 489553393}
   - component: {fileID: 489553394}
   m_Layer: 5
-  m_Name: YSlider
+  m_Name: Scale Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1043,10 +1043,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 508990688}
   m_HandleRect: {fileID: 70006947}
   m_Direction: 0
-  m_MinValue: 100
-  m_MaxValue: 1000
+  m_MinValue: 1
+  m_MaxValue: 100
   m_WholeNumbers: 1
-  m_Value: 100
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1238,7 +1238,7 @@ GameObject:
   - component: {fileID: 746478132}
   - component: {fileID: 746478131}
   m_Layer: 5
-  m_Name: Y Text
+  m_Name: Scale Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1451,7 +1451,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 747970490}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b7b3051ed018b9428fd8d09f9c992de, type: 3}
   m_Name: 
@@ -2260,7 +2260,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 0.3023318, g: 0.8113208, b: 0.7561546, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2279,7 +2279,7 @@ Transform:
   m_GameObject: {fileID: 1142250825}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -2328,8 +2328,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seed: 10
-  xMax: 100
-  yMax: 100
+  xMax: 256
+  yMax: 256
   scale: 5
   currentColour: 2
   currentNoise: 1
