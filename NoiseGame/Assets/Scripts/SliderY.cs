@@ -9,6 +9,7 @@ public class SliderY : MonoBehaviour
 
     public void Start()
     {
+        mainSlider = GetComponent<Slider>();
         //Adds a listener to the main slider and invokes a method when the value changes.
         mainSlider.onValueChanged.AddListener(delegate { ValueChangeCheck(); });
     }

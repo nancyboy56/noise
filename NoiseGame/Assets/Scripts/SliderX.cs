@@ -9,6 +9,7 @@ public class SliderX : MonoBehaviour
 
     public void Start()
     {
+        mainSlider = GetComponent<Slider>();
         //Adds a listener to the main slider and invokes a method when the value changes.
         mainSlider.onValueChanged.AddListener(delegate { ValueChangeCheck(); });
     }
@@ -17,6 +18,7 @@ public class SliderX : MonoBehaviour
     public void ValueChangeCheck()
     {
         NoiseManger.Instance.xMax = (int)mainSlider.value;
+        NoiseManger.Instance.yMax = (int)mainSlider.value;
         Debug.Log("X slider:"+ mainSlider.value);
     }
 }

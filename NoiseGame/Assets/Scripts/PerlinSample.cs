@@ -5,14 +5,14 @@ using UnityEngine;
 public class PerlinSample : MonoBehaviour
 {
     // Width and height of the texture in pixels.
-    public int width =256;
-    public int height =256;
+    public int width;
+    public int height;
 
 
 
     // The number of cycles of the basic noise pattern that are repeated
     // over the width and height of the texture.
-    public float scale = 20.0F;
+    public float scale = 5.0F;
 
   //  private Texture2D noiseTex;
    // private Color[] pix;
@@ -57,10 +57,16 @@ public class PerlinSample : MonoBehaviour
 
     private Color CalculateColour(int x, int y)
     {
-        float xPerlin = (float)x / width *20f;
-        float yPerlin = (float)y / height *20f;
-        float perlin= Mathf.PerlinNoise(xPerlin, yPerlin);
+        float xPerlin = (float)x / width *scale;
+        float yPerlin = (float)y / height *scale;
+        float perlin= (float)RoundUp(Mathf.PerlinNoise(xPerlin, yPerlin), 1);
         return new Color(perlin, perlin, perlin);
+    }
+
+    public double RoundUp(double input, int places)
+    {
+        double multiplier = System.Math.Pow(10, System.Convert.ToDouble(places));
+        return System.Math.Ceiling(input * multiplier) / multiplier;
     }
 
     void Update()
