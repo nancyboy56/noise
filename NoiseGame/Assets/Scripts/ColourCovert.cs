@@ -18,10 +18,10 @@ public struct rgb {
 public class ColourCovert 
 {
     
-    public int[] rgb2hsv(int r, int g, int b)
+    public double[] rgb2hsv(double r, double g, double b)
     {
         rgb input = new rgb();
-        double[] outArray = new double[3];
+        double[] outputArray = new double[3];
         input.r = r;
         input.b = b;
         input.g = g;
@@ -41,7 +41,10 @@ public class ColourCovert
         {
             output.s = 0;
             output.h = 0; // undefined, maybe nan?
-            return new int { output.h, output.s, output.v };
+            outputArray[0] = output.h;
+            outputArray[1] = output.s;
+            outputArray[2] = output.v;
+            return outputArray;
         }
         if (max > 0.0)
         { // NOTE: if Max is == 0, this divide would cause a crash
@@ -52,29 +55,46 @@ public class ColourCovert
             // if max is 0, then r = g = b = 0              
             // s = 0, h is undefined
             output.s = 0.0;
-            output.h = 0.0;                            // its now undefined
-            return output;
+            output.h = 0.0;
+            // its now undefined
+            outputArray[0] = output.h;
+            outputArray[1] = output.s;
+            outputArray[2] = output.v;
+            return outputArray;
         }
 
-        if (input.r >= max )                           // > is bogus, just keeps compilor happy
-            output.h = (input.g - input.b ) / delta;        // between yellow & magenta
+        // > is bogus, just keeps compilor happy
+        if (input.r >= max )
+            // between yellow & magenta
+            output.h = (input.g - input.b ) / delta;        
+        else if (input.g >= max )
+            // between cyan & yellow
+            output.h = 2.0 + (input.b - input.r ) / delta;  
         else
-        if (input.g >= max )
-            output.h = 2.0 + (input.b - input.r ) / delta;  // between cyan & yellow
-        else
-            output.h = 4.0 + (input.r - input.g ) / delta;  // between magenta & cyan
+            // between magenta & cyan
+            output.h = 4.0 + (input.r - input.g ) / delta;  
 
-        output.h *= 60.0;                              // degrees
+        // degrees
+        output.h *= 60.0;  
 
         if (output.h < 0.0)
             output.h += 360.0;
 
-        return output;
+        outputArray[0] = output.h;
+        outputArray[1] = output.s;
+        outputArray[2] = output.v;
+        return outputArray;
     }
 
 
-    public rgb hsv2rgb(hsv input)
+    public double[] hsv2rgb(double h, double s, double v)
     {
+        hsv input = new hsv();
+        double[] outputArray = new double[3];
+        input.h = h;
+        input.s = s;
+        input.v = v;
+
         double hh, p, q, t, ff;
         long i;
         rgb output;
@@ -83,7 +103,10 @@ public class ColourCovert
             output.r = input.v;
             output.g = input.v;
             output.b = input.v;
-            return output;
+            outputArray[0] = output.r;
+            outputArray[1] = output.g;
+            outputArray[2] = output.b;
+            return outputArray;
         }
         hh = input.h;
 
@@ -130,6 +153,9 @@ public class ColourCovert
                 output.b = q;
                 break;
         }
-        return output;
+        outputArray[0] = output.r;
+        outputArray[1] = output.g;
+        outputArray[2] = output.b;
+        return outputArray;
     }
 }

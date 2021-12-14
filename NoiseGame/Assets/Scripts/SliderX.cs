@@ -17,8 +17,7 @@ public class SliderX : MonoBehaviour
     // Invoked when the value of the slider changes.
     public void ValueChangeCheck()
     {
-        NoiseManger.Instance.xMax = (int)mainSlider.value;
-        NoiseManger.Instance.yMax = (int)mainSlider.value;
-        Debug.Log("X slider:"+ mainSlider.value);
+        NoiseManger.Instance.scale = (int)mainSlider.value;
+        Debug.Log("Scale slider:"+ mainSlider.value);
     }
 }
