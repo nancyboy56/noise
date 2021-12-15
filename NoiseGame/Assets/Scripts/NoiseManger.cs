@@ -100,21 +100,19 @@ public class NoiseManger : MonoBehaviour
 		if (currentColour == ColourType.Hex)
 		{
 
-			uint colour = (uint)(perlin * Math.Pow(1, 9));
-
-			colour = colour / hexscale;
+			uint colour = (uint)(perlin * Math.Pow(10, 7));
 
 			string myHex = colour.ToString("X");
-			Debug.Log("hex number: " + x + ", " + myHex);
+			//Debug.Log("hex number: " + x + ", " + myHex);
 
 			ColorUtility.TryParseHtmlString("#" + myHex, out c);
 
 		}
 		else if (currentColour == ColourType.HSV)
 		{
-			uint colour = (uint)(perlin * Math.Pow(1, 9));
+			uint colour = (uint)(perlin * Math.Pow(10, 7));
 
-			colour = colour / hexscale;
+			
 
 			string myHex = colour.ToString("X");
 			//Debug.Log("hex number: " + x + ", " + myHex);

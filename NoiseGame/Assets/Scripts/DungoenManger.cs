@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,12 +9,18 @@ public class DungoenManger : MonoBehaviour
 
     public static DungoenManger Instance { get { return _instance; } }
 
-    private Dictionary<string, GameObject> walls = new Dictionary<string, GameObject>();
+    //private Dictionary<string, GameObject> walls = new Dictionary<string, GameObject>();
+
+        //thread safe
+    private ConcurrentDictionary<string, GameObject> walls = new ConcurrentDictionary<string, GameObject>();
+
     // Start is called before the first frame update
     void Start()
     {
         
     }
+
+
 
     // Update is called once per frame
     void Update()
